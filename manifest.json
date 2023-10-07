@@ -2,7 +2,7 @@
   "name": "Travazap",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Injecting stuff",
+  "description": "Scripts de alguns filmes para o Whatsapp Web",
   "homepage_url": "https://twitter.com/whywalcker",
   "background": {
     "scripts": [
