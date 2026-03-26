@@ -1372,32 +1372,35 @@ async function enviarScript(scriptText) {
     .split(/[\n\t]+/)
     .map((line) => line.trim())
     .filter((line) => line);
-  (main = document.querySelector('#main')),
-    (textarea = main.querySelector(`div[contenteditable="true"]`));
+
+  const textarea = document.querySelector('[data-lexical-editor="true"]');
 
   if (!textarea) throw new Error('Não há uma conversa aberta');
 
   for (const line of lines) {
-    console.log(line);
-
     textarea.focus();
-    document.execCommand('insertText', false, line);
-    textarea.dispatchEvent(new Event('change', { bubbles: true }));
 
-    setTimeout(() => {
-      (
-        main.querySelector(`[data-testid="send"]`) ||
-        main.querySelector(`[data-icon="send"]`)
-      ).click();
-    }, 100);
+    textarea.dispatchEvent(new InputEvent('beforeinput', {
+      inputType: 'insertText',
+      data: line,
+      bubbles: true,
+      cancelable: true
+    }));
 
-    if (lines.indexOf(line) !== lines.length - 1)
-      await new Promise((resolve) => setTimeout(resolve, 250));
+    await new Promise((resolve) => setTimeout(resolve, 150));
+
+    const sendButton =
+      document.querySelector('[aria-label="Enviar"]') ||
+      document.querySelector('[data-icon="wds-ic-send-filled"]');
+
+    if (sendButton) {
+      sendButton.click();
+    }
+
+    await new Promise((resolve) => setTimeout(resolve, 250));
   }
 
   return lines.length;
 }
 
-enviarScript(beeMovie)
-  .then((e) => alert("Processo finalizado!"))
-  .catch(console.error);
+enviarScript(beeMovie).then(console.log).catch(console.error);
