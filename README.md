@@ -1,11 +1,11 @@
 # Broken Zap
 
 ### Para instalar é bem simples.
-1 - Clone o projeto em sua máquina;
-2 - Abra `chrome://extensions/` no navegador (a maioria dos navegadores de base *chromium* tipo Edge e etc);
-3 - Clique em *"Carregar sem compactação"*;
-4 - Selecione a pasta do projeto;
-5 - Para garantir, reinicie o navegador;
+- Clone o projeto em sua máquina;
+- Abra `chrome://extensions/` no navegador (a maioria dos navegadores de base *chromium* tipo Edge e etc);
+- Clique em *"Carregar sem compactação"*;
+- Selecione a pasta do projeto;
+- Para garantir, reinicie o navegador;
 
 _Obs.: Você só conseguirá instalar a extensão caso seu navegador tenha o modo desenvolvedor nas extensões. Para ativar, só selecionar o switch no canto superior direito e pronto._
 
